@@ -21,6 +21,7 @@ entrypoints==0.3
 Flask==1.1.2
 Flask-Compress==1.5.0
 future==0.18.2
+gunicorn==20.0.4
 importlib-metadata==2.0.0
 isort==5.5.4
 itsdangerous==1.1.0

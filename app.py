@@ -11,6 +11,8 @@ df_main = data_connect()
 country_options = [{'label': i, 'value': i} for i in sorted(df_main.country.unique())]
 
 app = dash.Dash(__name__)
+server = app.server
+
 app.title = "CORONA"
 
 app.layout = html.Div(

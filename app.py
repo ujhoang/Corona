@@ -17,10 +17,6 @@ app.layout = html.Div(
     children = [
         html.H1(children="CORONA IN THE WORLD"),
 
-        html.Div(children='''
-        Interactive chart for corona
-        '''),
-
         html.Div([
                 dcc.Dropdown(
                     id = "country-dropdown",
@@ -45,11 +41,14 @@ def select_country_infecte(value):
     df_plot = df_main[df_main["country"] == value]
     df_plot.set_index("date", inplace = True)
     df_plot = df_plot[["value_confirmed", "value_deaths"]].dropna().rolling(7).mean().dropna().round(0)
+    df_plot.columns = ["Infection", "Death"]
 
     fig = px.line(
         df_plot
-        , x=df_plot.index , y=["value_confirmed", "value_deaths"]
+        , x=df_plot.index , y=["Infection", "Death"]
+        ,labels= {"date":"Date", "value":"Count"}
         )
+    
     
     return fig
 
